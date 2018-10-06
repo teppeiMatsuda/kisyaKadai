@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.kisya.mailApp">
+	<logger name="com.example.mail">
 		<level value="info" />
 	</logger>
 	
