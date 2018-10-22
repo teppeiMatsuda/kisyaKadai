@@ -22,18 +22,53 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home(Locale locale, Model model) {
+//		logger.info("Welcome home! The client locale is {}.", locale);
+//		
+//		Date date = new Date();
+//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//		
+//		String formattedDate = dateFormat.format(date);
+//		
+//		model.addAttribute("serverTime", formattedDate );
+//		
+//		return "home";
+//	}
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		return "login";
+	}
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/reception", method = RequestMethod.GET)
+	public String reception(Locale locale, Model model) {
 		
-		String formattedDate = dateFormat.format(date);
+		return "reception";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/submit", method = RequestMethod.GET)
+	public String submit(Locale locale, Model model) {
 		
-		model.addAttribute("serverTime", formattedDate );
+		return "submit";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/address", method = RequestMethod.GET)
+	public String address(Locale locale, Model model) {
 		
-		return "home";
+		return "address";
 	}
 	
 }
