@@ -11,6 +11,6 @@
 	受信メール一覧
 </h1>
 
-<P>  The time on the server is </P>
+<P>  The time on the server is ${data}.</P>
 </body>
 </html>
