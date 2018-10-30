@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +55,14 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/reception", method = RequestMethod.GET)
-	public String reception(Locale locale, Model model) {
+	public String reception(Locale locale, Model model, HttpServletRequest request) {
+		
+		String loginId = request.getParameter("loginid");
 		
 		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM user");
 
         model.addAttribute("data", list.get(0).get("userId") );
+        model.addAttribute("loginId", loginId);
 		
 		return "reception";
 	}

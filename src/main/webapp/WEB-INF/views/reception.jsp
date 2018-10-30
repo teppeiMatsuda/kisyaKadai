@@ -12,5 +12,6 @@
 </h1>
 
 <P>  The time on the server is ${data}.</P>
+<P> ${loginId}.</P>
 </body>
 </html>
