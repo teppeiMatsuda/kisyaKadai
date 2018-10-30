@@ -11,7 +11,7 @@
 	(いい)メール「かっこいいめーる」( ;∀;)
 </h1>
 <form action="reception" method="get">
-	<input type="text" name="login"></input>
+	<input type="text" name="loginid"></input>
 	<br />
 	<input type="password" name="password"></input>
 	<br />
