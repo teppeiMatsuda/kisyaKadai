@@ -29,22 +29,6 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
-//		return "home";
-//	}
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -59,10 +43,10 @@ public class HomeController {
 		
 		String loginId = request.getParameter("loginid");
 		
-		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM user");
+		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM mail");
 
-        model.addAttribute("data", list.get(0).get("userId") );
-        model.addAttribute("loginId", loginId);
+        model.addAttribute("data", list);
+        model.addAttribute("title", list.get(0));
 		
 		return "reception";
 	}
