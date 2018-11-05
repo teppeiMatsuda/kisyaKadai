@@ -35,5 +35,6 @@ table {
 <P class="mail">${maildata.title}</P>
 <P class="mail"> 本文</P>
 <P class="mail">${maildata.main}</P>
+<a href="reception">受信一覧に戻る</a>
 </body>
 </html>
