@@ -38,12 +38,28 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/reception", method = RequestMethod.GET)
+	@RequestMapping(value = "/reception", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reception(Locale locale, Model model, HttpServletRequest request) {
 		
+		// login用フォーム値取得(ID)
 		String loginId = request.getParameter("loginid");
 		
-		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM mail");
+		// login用フォーム値取得(password)
+		String passWord = request.getParameter("password");
+
+		// loginユーザID変数定義
+		String userId = "1";
+		
+		// SQL用変数定義
+		String mailSql = "";
+		
+		// SQL作成
+		mailSql = "SELECT tf.to, tf.from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
+		mailSql += "FROM to_from tf ";
+		mailSql += "LEFT JOIN mail m ON m.id = tf.mailid ";
+		mailSql += "where tf.to = ?";
+		
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(mailSql, userId);
 
         model.addAttribute("data", list);
         model.addAttribute("title", list.get(0));

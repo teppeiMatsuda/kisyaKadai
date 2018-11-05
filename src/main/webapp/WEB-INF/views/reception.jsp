@@ -40,7 +40,13 @@ table {
 				<td class="naiyo"><c:out value="${obj.recept_date}"/></td>
 				<td class="naiyo"><c:out value="${obj.title}"/></td>
 				<td class="naiyo">高島</td>
-				<td class="naiyo"><a href="prevew?id=${obj.id}">詳細</a></td>
+				<td class="naiyo"><a href="prevew?id=${obj.mailid}">詳細</a></td>
+				<td class="naiyo">
+					<c:choose>
+						<c:when test="${obj.read_flg == 1}">既読</c:when>
+						<c:otherwise>未読</c:otherwise>
+					</c:choose>
+				</td>
 	  		</tr>
 		</c:forEach>
 	</table>

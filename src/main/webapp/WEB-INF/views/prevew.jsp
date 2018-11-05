@@ -32,8 +32,8 @@ table {
 </h1>
 
 <P class="mail"> タイトル </P>
-<P class="mail">${title.title}</P>
+<P class="mail">${maildata.title}</P>
 <P class="mail"> 本文</P>
-<P class="mail">${title.main}</P>
+<P class="mail">${maildata.main}</P>
 </body>
 </html>

@@ -25,13 +25,13 @@ public class PrevewController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/prevew", method = RequestMethod.GET)
-	public String Prevew(Locale locale, Model model, HttpServletRequest request) {
+	public String prevew(Locale locale, Model model, HttpServletRequest request) {
 		
 		String mailid = request.getParameter("id");
 		
-		List<Map<String, Object>> maildata = jdbcTemplate.queryForList("SELECT * FROM mail WHERE id = ?", mailid);
+		List<Map<String, Object>> maildata = jdbcTemplate.queryForList("SELECT title,main FROM mail WHERE id = ?", mailid);
 
-        model.addAttribute("title", maildata.get(0));
+        model.addAttribute("maildata", maildata.get(0));
 		
 		return "prevew";
 	}
