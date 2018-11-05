@@ -27,9 +27,18 @@ public class PrevewController {
 	@RequestMapping(value = "/prevew", method = RequestMethod.GET)
 	public String prevew(Locale locale, Model model, HttpServletRequest request) {
 		
+		
 		String mailid = request.getParameter("id");
 		
-		List<Map<String, Object>> maildata = jdbcTemplate.queryForList("SELECT title,main FROM mail WHERE id = ?", mailid);
+		String selectSql = "", updateSql = "";
+		
+		selectSql = "SELECT title,main FROM mail WHERE id = ?";
+		
+		List<Map<String, Object>> maildata = jdbcTemplate.queryForList(selectSql, mailid);
+		
+		updateSql = "UPDATE to_from SET read_flg = 1 WHERE mailid = ?";
+		
+		jdbcTemplate.update(updateSql, mailid);
 
         model.addAttribute("maildata", maildata.get(0));
 		
