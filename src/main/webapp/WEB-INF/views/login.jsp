@@ -10,7 +10,7 @@
 <h1 class="title">
 	(いい)メール「かっこいいめーる」( ;∀;)
 </h1>
-<form action="reception" method="get">
+<form action="reception" method="POST">
 	<input type="text" name="loginid"></input>
 	<br />
 	<input type="password" name="password"></input>
