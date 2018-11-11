@@ -25,7 +25,8 @@ public class AddressService {
 	 */
 	public List<AddressDto> getAllAddress() {
 		List<AddressDto> addressDtoList = new ArrayList();
-		String getAddressSql = "SELECT "
+		String getAddressSql =
+				"SELECT "
 				+ "whosaddress AS address,"
 				+ "userid AS userId,"
 				+ "japanesename AS japaneseName "

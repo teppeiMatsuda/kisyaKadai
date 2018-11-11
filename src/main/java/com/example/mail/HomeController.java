@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.mail.dto.AddressDto;
 import com.example.mail.service.AddressService;
 
 /**
@@ -87,9 +86,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/address", method = RequestMethod.GET)
 	public String address(Locale locale, Model model) {
-		List<AddressDto> addressList = addressService.getAllAddress();
-		model.addAttribute("userName", addressList.get(0).getUserId());
-		model.addAttribute("address","‚ ‚¢‚¤‚¦‚¨");
+		model.addAttribute("addressList",addressService.getAllAddress());
 		return "address";
 	}
 
