@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <bean id="dataSource"
     class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -10,7 +10,7 @@
         <value>com.mysql.jdbc.Driver</value>
     </property>
     <property name="url">
-        <value>jdbc:mysql://127.0.0.1:3306/MailSystem</value>
+        <value>jdbc:mysql://127.0.0.1:3306/MailSystem?useSSL=false</value>
     </property>
     <property name="username">
         <value>root</value>
