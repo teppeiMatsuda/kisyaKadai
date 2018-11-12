@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.mail.service.AddressService;
 
-
-
 /**
  * アドレス帳一覧コントローラクラスです
  */
@@ -19,13 +17,6 @@ import com.example.mail.service.AddressService;
 public class AddressController {
 
 	@Autowired AddressService addressService;
-
-//	@RequestMapping(value="/address")
-//	public String getMethod(@ModelAttribute AddressDto dto){
-//	  System.out.println("User Name : " + dto.getName());
-//	  System.out.println("Email Address : " + dto.getAddress());
-//	  return "address";
-//	}
 
 	/**
 	 * Simply selects the home view to render by returning its name.

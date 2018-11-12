@@ -6,21 +6,23 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.mail.dao.AddressDao;
 
 /**
  * アドレス帳一覧サービスクラスです
  */
-@Controller
+@Service
+@Transactional
 public class AddressService {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	/**
-	 * addressテーブより全データ取得
+	 * addressテーブルより全データ取得
 	 * @return List<AddressDao> アドレスDtoList
 	 */
 	public List<AddressDao> getAllAddress() {
