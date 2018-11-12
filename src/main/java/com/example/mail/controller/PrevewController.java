@@ -1,4 +1,4 @@
-package com.example.mail;
+package com.example.mail.controller;
 
 import java.util.List;
 import java.util.Locale;
