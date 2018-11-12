@@ -1,10 +1,12 @@
-package com.example.mail.contoroller;
+package com.example.mail.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,11 +50,20 @@ public class ReceptionController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @return 
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
-	public String update(Locale locale, Model model, HttpServletRequest request) {
+	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		
-		return "submit";
+		String deleteflg = request.getParameter("deleteflg");
+		String maildata[] = request.getParameterValues("maildata");
+		String midoku = request.getParameter("midoku");
+		model.addAttribute("midoku", midoku);
+		model.addAttribute("deleteflg", deleteflg);
+		model.addAttribute("maildata", maildata);
+		
+		return "confilm";
 	}
 }

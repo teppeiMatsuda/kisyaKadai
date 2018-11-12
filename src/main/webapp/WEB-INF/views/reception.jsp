@@ -28,6 +28,9 @@ table {
 <h1>
 	受信メール一覧
 </h1>
+	<c:if test="${deleteflg == 1}">
+	  	削除します
+	</c:if>
 	<form action="update" method="POST">
 		<input type="submit" name="deleteflg" value="1">削除</input>
 		<input type="submit" name="midoku" value="1">未読にする</input>
@@ -40,7 +43,7 @@ table {
 			</tr>
 			<c:forEach var="obj" items="${data}" varStatus="status">
 		  		<tr>
-		  			<td class="naiyo"><input type="checkbox" value="${obj.mailid}"></td>
+		  			<td class="naiyo"><input type="checkbox" name="maildata" value="${obj.mailid}"></td>
 					<td class="naiyo"><c:out value="${obj.recept_date}"/></td>
 					<td class="naiyo"><c:out value="${obj.title}"/></td>
 					<td class="naiyo">高島</td>
