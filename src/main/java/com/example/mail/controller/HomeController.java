@@ -81,13 +81,5 @@ public class HomeController {
 		return "submit";
 	}
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/address", method = RequestMethod.GET)
-	public String address(Locale locale, Model model) {
-//		model.addAttribute("addressList",addressService.getAllAddress());
-		return "address";
-	}
 
 }
