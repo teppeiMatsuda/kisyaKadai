@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,9 +43,12 @@ public class ReceptionController {
 		
 		List<Map<String, Object>> list = ReceptionService.getMailList(userId);
 
-        model.addAttribute("data", list);
-        model.addAttribute("title", list.get(0));
-		
+		if(list != null) {
+			if(list.size() > 0) {
+				model.addAttribute("data", list);
+				model.addAttribute("title", list.get(0));
+			}
+		}
 		return "reception";
 	}
 	
@@ -56,13 +60,17 @@ public class ReceptionController {
 	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+		// loginÉÜÅ[ÉUIDïœêîíËã`
+		String userId = "1";
 		
 		String deleteflg = request.getParameter("deleteflg");
+		String midokuflg = request.getParameter("midokuflg");
 		String maildata[] = request.getParameterValues("maildata");
-		String midoku = request.getParameter("midoku");
-		model.addAttribute("midoku", midoku);
+		
+		ReceptionService.updateMailList(userId, maildata, deleteflg, midokuflg);
+		
 		model.addAttribute("deleteflg", deleteflg);
-		model.addAttribute("maildata", maildata);
+		model.addAttribute("midokuflg", midokuflg);
 		
 		return "confilm";
 	}

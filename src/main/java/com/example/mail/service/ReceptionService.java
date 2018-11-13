@@ -23,4 +23,11 @@ public class ReceptionService {
 		return list;
 	}
 
+	public boolean updateMailList(String userId, String maildata[], String deleteflg, String midokuflg) {
+		
+		ReceptionDao.updateMailList(userId, maildata, deleteflg, midokuflg);
+		
+		return true;
+	}
+
 }

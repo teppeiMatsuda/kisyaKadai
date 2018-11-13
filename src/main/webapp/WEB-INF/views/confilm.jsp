@@ -31,7 +31,7 @@ table {
 	<c:if test="${deleteflg == 1}">
 	  	削除が完了しました。
 	</c:if>
-	<c:if test="${midoku == 1}">
+	<c:if test="${midokuflg == 1}">
 	  	選択したメールを未読にしました。
 	</c:if>
 </body>
