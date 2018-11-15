@@ -28,13 +28,4 @@ public class HomeController {
 		return "login";
 	}
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/submit", method = RequestMethod.GET)
-	public String submit(Locale locale, Model model) {
-		
-		return "submit";
-	}
-	
 }

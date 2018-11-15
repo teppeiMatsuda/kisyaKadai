@@ -45,9 +45,11 @@ table {
 		<c:if test="${data.size() > 0}" var="flag">
 			<table border="1">
 				<tr>
+					<td></td>
 					<td>受信日</td>
 					<td>タイトル</td>
 					<td>送信者</td>
+					<td></td>
 					<td></td>
 				</tr>
 				<c:forEach var="obj" items="${data}" varStatus="status">

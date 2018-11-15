@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
-public class ReceptionDao {
+public class SubmitDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
@@ -24,14 +24,14 @@ public class ReceptionDao {
 		mailSql = "SELECT tf.to, tf.from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
 		mailSql += "FROM to_from tf ";
 		mailSql += "LEFT JOIN mail m ON m.id = tf.mailid ";
-		mailSql += "where tf.to = ? AND to_deleteflg = 0";
+		mailSql += "where tf.from = ? AND from_deleteflg = 0";
 
 		List<Map<String, Object>> list = jdbcTemplate.queryForList(mailSql, userId);
 		return list;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public void updateMailList(String userId, String maildata[], String deleteflg, String midokuflg) {
+	public void updateMailList(String userId, String maildata[], String deleteflg) {
 		
 		// SQLópïœêîíËã`
 		String mailSql = "";
@@ -43,20 +43,14 @@ public class ReceptionDao {
 			if(deleteflg.equals("1")) {
 				// SQLçÏê¨
 				mailSql = "UPDATE to_from tf";
-				mailSql += " SET tf.to_deleteflg = 1";
+				mailSql += " SET tf.from_deleteflg = 1";
 			}
 		}
-		if(midokuflg != null) {
-			if(midokuflg.equals("1")) {
-				// SQLçÏê¨
-				mailSql = "UPDATE to_from tf";
-				mailSql += " SET tf.read_flg = 0";
-			}
-		}
-		mailSql += " WHERE tf.to = " + userId;
+		mailSql += " WHERE tf.from = " + userId;
 		
 		String mailIdList = "";
 		int i = 0;
+		int bool = 100;
 		if(maildata != null) {
 			for(String mail : maildata){
 				if(i == 0) {
@@ -67,7 +61,7 @@ public class ReceptionDao {
 				i++;
 			}
 			mailSql += " AND tf.mailid IN (" + mailIdList + ")";
-			jdbcTemplate.update(mailSql);
+			bool = jdbcTemplate.update(mailSql);
 		}
 
 		return;
