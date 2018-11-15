@@ -14,33 +14,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.mail.service.ReceptionService;
+import com.example.mail.service.SubmitService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class ReceptionController {
+public class SubmitController {
 	
 	@Autowired
-	ReceptionService ReceptionService;
-	
+	SubmitService SubmitService;
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/reception", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reception(Locale locale, Model model, HttpServletRequest request) {
-		
-		// login用フォーム値取得(ID)
-		String loginId = request.getParameter("loginid");
-		
-		// login用フォーム値取得(password)
-		String passWord = request.getParameter("password");
+	@RequestMapping(value = "/submitList", method = { RequestMethod.GET, RequestMethod.POST })
+	public String submitList(Locale locale, Model model, HttpServletRequest request) {
 
 		// loginユーザID変数定義
 		String userId = "1";
 		
-		List<Map<String, Object>> list = ReceptionService.getMailList(userId);
+		List<Map<String, Object>> list = SubmitService.getMailList(userId);
 
 		if(list != null) {
 			if(list.size() > 0) {
@@ -48,7 +42,7 @@ public class ReceptionController {
 				model.addAttribute("title", list.get(0));
 			}
 		}
-		return "reception";
+		return "submit";
 	}
 	
 	/**
@@ -56,21 +50,20 @@ public class ReceptionController {
 	 * @return 
 	 * @throws IOException 
 	 */
-	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/submitUpdate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		// loginユーザID変数定義
 		String userId = "1";
 		
 		String deleteflg = request.getParameter("deleteflg");
-		String midokuflg = request.getParameter("midokuflg");
 		String maildata[] = request.getParameterValues("maildata");
 		
-		ReceptionService.updateMailList(userId, maildata, deleteflg, midokuflg);
+		SubmitService.updateMailList(userId, maildata, deleteflg);
 		
 		model.addAttribute("deleteflg", deleteflg);
-		model.addAttribute("midokuflg", midokuflg);
 		
 		return "confilm";
 	}
+
 }

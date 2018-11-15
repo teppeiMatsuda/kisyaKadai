@@ -7,11 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.mail.service.PrevewService;
 
 /**
  * Handles requests for the application home page.
@@ -20,7 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PrevewController {
 	
 	@Autowired
-    private JdbcTemplate jdbcTemplate;
+	PrevewService PrevewService;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -30,16 +32,26 @@ public class PrevewController {
 		
 		String mailid = request.getParameter("id");
 		
-		String selectSql = "", updateSql = "";
+		List<Map<String, Object>> maildata = PrevewService.getMailData(mailid);
 		
-		selectSql = "SELECT title,main FROM mail WHERE id = ?";
+        model.addAttribute("maildata", maildata.get(0));
 		
-		List<Map<String, Object>> maildata = jdbcTemplate.queryForList(selectSql, mailid);
+		return "prevew";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/submitPrevew", method = RequestMethod.GET)
+	public String submitPrevew(Locale locale, Model model, HttpServletRequest request) {
 		
-		updateSql = "UPDATE to_from SET read_flg = 1 WHERE mailid = ?";
 		
-		jdbcTemplate.update(updateSql, mailid);
-
+		String mailid = request.getParameter("id");
+		
+		int submitFlg = 1;
+		
+		List<Map<String, Object>> maildata = PrevewService.getMailData(mailid, submitFlg);
+		
         model.addAttribute("maildata", maildata.get(0));
 		
 		return "prevew";
