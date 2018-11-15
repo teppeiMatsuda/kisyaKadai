@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.mail.service.ReceptionService;
 import com.example.mail.service.LoginService;
+import javax.servlet.http.HttpSession;
 
 /**
  * Handles requests for the application home page.
@@ -34,27 +35,43 @@ public class ReceptionController {
 	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/reception", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reception(Locale locale, Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+	public String reception(Locale locale, Model model, HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 		
+		String loginId = "";
 		// ・文字コードの変換
 		request.setCharacterEncoding("utf-8");
 		
-		// login用フォーム値取得(ID)
-		String loginId = request.getParameter("loginid");
+//		int userId = 0;
+//		// loginflg取得
+//		String loginflg = request.getParameter("loginflg");
+//		
+//		if(!loginflg.isEmpty()) {
+//			// login用フォーム値取得(ID)
+//			loginId = request.getParameter("loginid");
+//			session.setAttribute("loginId", loginId);
+//			if(loginId.isEmpty()) {
+//				loginId = (String)session.getAttribute("loginId");
+//			}
+//			// login用フォーム値取得(password)
+//			String passWord = request.getParameter("password");
+//			session.setAttribute("passWord", passWord);
+//			if(passWord.isEmpty()) {
+//				passWord = (String)session.getAttribute("passWord");
+//			}
+//			if(loginId.isEmpty() || passWord.isEmpty()) {
+//				model.addAttribute("data", "ログインIDもしくはパスワードを入力してください。");
+//				return "login";
+//			}
+//			List<Map<String, Object>> user = LoginService.getUser(loginId, passWord);
+//			if(user.size() == 0) {
+//				model.addAttribute("data", "ログインIDもしくはパスワードが間違っています。");
+//				return "login";
+//			}
+//			// loginユーザID変数定義
+//			userId = (Integer) user.get(0).get("id");
+//		}
 		
-		// login用フォーム値取得(password)
-		String passWord = request.getParameter("password");
-		if(loginId.isEmpty() || passWord.isEmpty()) {
-			model.addAttribute("data", "ログインIDもしくはパスワードを入力してください。");
-			return "login";
-		}
-		List<Map<String, Object>> user = LoginService.getUser(loginId, passWord);
-		if(user.size() == 0) {
-			model.addAttribute("data", "ログインIDもしくはパスワードが間違っています。");
-			return "login";
-		}
-		// loginユーザID変数定義
-		String userId = "1";
+		int userId = 1;
 		
 		List<Map<String, Object>> list = ReceptionService.getMailList(userId);
 

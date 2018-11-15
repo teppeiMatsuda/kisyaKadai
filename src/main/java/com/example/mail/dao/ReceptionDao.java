@@ -16,7 +16,7 @@ public class ReceptionDao {
 	@Autowired
     private JdbcTemplate jdbcTemplate;
 	
-	public List<Map<String, Object>> getMailList(String userId) {
+	public List<Map<String, Object>> getMailList(int userId) {
 		
 		// SQL—p•Ï”’è‹`
 		String mailSql = "";
