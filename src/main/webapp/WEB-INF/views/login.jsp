@@ -2,6 +2,15 @@
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <link rel="stylesheet" href="./css/common.css">
+<style type="text/css">
+<!--
+.errorMassege{
+	text-align:center;
+	color:red;
+}
+
+-->
+</style>
 <html>
 <head>
 	<title>かっこいいメール</title>
@@ -10,6 +19,9 @@
 <h1 class="title">
 	(いい)メール「かっこいいめーる」( ;∀;)
 </h1>
+<c:if test="${data != null}">
+  	<p class="errorMassege"><c:out value="${data}"/></p>
+</c:if>
 <form action="reception" method="POST">
 	<input type="text" name="loginid"></input>
 	<br />
