@@ -1,13 +1,11 @@
 package com.example.mail.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
@@ -21,7 +19,7 @@ public class LoginDao {
 		// SQLópïœêîíËã`
 		String userSql = "";
 		// SQLçÏê¨
-		userSql = "SELECT userid ";
+		userSql = "SELECT id,userid ";
 		userSql += "FROM user ";
 		userSql += "where userid = ? AND password = ? ";
 
