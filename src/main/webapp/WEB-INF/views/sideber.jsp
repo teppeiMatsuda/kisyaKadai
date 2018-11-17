@@ -5,6 +5,7 @@
 <body>
 <a href="reception">受信メール一覧</a>
 <a href="submitList">送信メール一覧</a>
+<a href="submitForm">メール作成</a>
 <a href="address">アドレス一覧</a>
 <a href="/mail">ログアウト</a>
 </body>
