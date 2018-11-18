@@ -21,10 +21,10 @@ public class SubmitDao {
 		// SQLópïœêîíËã`
 		String mailSql = "";
 		// SQLçÏê¨
-		mailSql = "SELECT tf.to, tf.from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
+		mailSql = "SELECT tf.mail_to, tf.mail_from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
 		mailSql += "FROM to_from tf ";
 		mailSql += "LEFT JOIN mail m ON m.id = tf.mailid ";
-		mailSql += "where tf.from = ? AND from_deleteflg = 0";
+		mailSql += "where tf.mail_from = ? AND from_deleteflg = 0";
 
 		List<Map<String, Object>> list = jdbcTemplate.queryForList(mailSql, userId);
 		return list;
@@ -46,7 +46,7 @@ public class SubmitDao {
 				mailSql += " SET tf.from_deleteflg = 1";
 			}
 		}
-		mailSql += " WHERE tf.from = " + userId;
+		mailSql += " WHERE tf.mail_from = " + userId;
 		
 		String mailIdList = "";
 		int i = 0;
