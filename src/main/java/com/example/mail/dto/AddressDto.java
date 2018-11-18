@@ -1,11 +1,11 @@
-package com.example.mail.dao;
+package com.example.mail.dto;
 
 /**
  * アドレス用daoクラス
  * @author t.matsuda
  *
  */
-public class AddressDao {
+public class AddressDto {
 
 	// 対象者
 	private String address;
