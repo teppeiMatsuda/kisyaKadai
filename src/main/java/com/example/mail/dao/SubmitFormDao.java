@@ -90,6 +90,6 @@ public class SubmitFormDao {
 				+ "FROM "
 					+ "mail "
 				+ "ORDER BY id DESC LIMIT 1;";
-		jdbcTemplate.update(sql, address, "DIO");
+		jdbcTemplate.update(sql, "jojo", "DIO");
 	}
 }
