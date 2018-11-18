@@ -70,17 +70,28 @@ public class SubmitFormDao {
 	}
 
 	/**
-	 *
+	 * メール送信先アドレスがエラーの際に届くお知らせメール
+	 * @param address
 	 */
-	public void registErrorMail() {
+	public void registErrorMail(SubmitMailBean sb, String address) {
 
+		String mailBody =
+				address+"へのメール送信は"+errorMailBody
+				+ "\r\n"
+				+"subject:"+sb.getSubject()
+				+ "\r\n"
+				+"Mail Body:"+sb.getMailBody();
 		String sql =
 				"INSERT INTO "
 				+ "mail(title,main) "
 				+ "VALUES (?,?)";
-		jdbcTemplate.update(sql,errorSubject,errorMailBody);
+		jdbcTemplate.update(sql,errorSubject,mailBody);
 	}
 
+	/**
+	 * メール送信先アドレスがエラーの際に届くお知らせメール詳細
+	 * @param address
+	 */
 	public void registErrorMailHist(String address) {
 		String sql =
 				"INSERT INTO "

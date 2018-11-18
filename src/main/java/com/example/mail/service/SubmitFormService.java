@@ -36,7 +36,7 @@ public class SubmitFormService {
 				submitFormDao.registMailHist(sb,address);
 			} else {
 				// ƒAƒhƒŒƒX‚ª‘¶İ‚µ‚È‚¢
-				submitFormDao.registErrorMail();
+				submitFormDao.registErrorMail(sb,address);
 				submitFormDao.registErrorMailHist(address);
 			}
 		}
