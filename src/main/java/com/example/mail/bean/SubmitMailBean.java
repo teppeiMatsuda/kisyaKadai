@@ -2,7 +2,11 @@ package com.example.mail.bean;
 
 import java.io.Serializable;
 
-
+/**
+ * メール作成用オブジェクト
+ * @author t.matsuda
+ *
+ */
 public class SubmitMailBean implements Serializable{
 	// 送信先アドレス
 	private String address;

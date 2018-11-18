@@ -12,6 +12,7 @@ import com.example.mail.service.AddressService;
 
 /**
  * アドレス帳一覧コントローラクラスです
+ * @author t.matsuda
  */
 @Controller
 public class AddressController {

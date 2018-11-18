@@ -13,6 +13,7 @@ import com.example.mail.dto.AddressDto;
 
 /**
  * アドレス帳一覧サービスクラスです
+ * @author t.matsuda
  */
 @Service
 @Transactional

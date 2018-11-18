@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.mail.bean.SubmitMailBean;
 import com.example.mail.dao.SubmitFormDao;
 
+/**
+ * メール送信が行われた際のビジネスロジック
+ * @author t.matsuda
+ *
+ */
 @Service
 public class SubmitFormService {
 
@@ -23,18 +28,16 @@ public class SubmitFormService {
 	@Transactional
 	public void checkMail(SubmitMailBean sb) {
 		List<String> addresses = splitAddress(sb.getAddress());
-		// アドレスが複数ある場合にはtrue:1つの場合にはfalse
-		boolean addressesFlg = (addresses.size() > 1) ? true : false;
 
 		for (String address : addresses) {
 			if (submitFormDao.isExistAddress(address)) {
 				// アドレスが存在する
 				submitFormDao.registMail(sb);
 				submitFormDao.registMailHist(sb,address);
-				System.out.println("あった！");
 			} else {
 				// アドレスが存在しない
-				System.out.println("なかった・・・");
+				submitFormDao.registErrorMail();
+				submitFormDao.registErrorMailHist(address);
 			}
 		}
 	}
@@ -54,5 +57,4 @@ public class SubmitFormService {
 		}
 		return addressList;
 	}
-
 }

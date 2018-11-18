@@ -1,7 +1,7 @@
 package com.example.mail.dto;
 
 /**
- * アドレス用daoクラス
+ * アドレス用dtoクラス
  * @author t.matsuda
  *
  */

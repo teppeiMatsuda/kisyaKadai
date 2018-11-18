@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.mail.bean.SubmitMailBean;
 import com.example.mail.service.SubmitFormService;
 
+/**
+ * メール送信コントローラ
+ * @author t.matsuda
+ *
+ */
 @Controller
 public class SubmitFormController {
 
