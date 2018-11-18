@@ -1,0 +1,36 @@
+@charset "UTF-8";
+.side {
+	width: 20%;
+	float: left;
+	position: sticky;
+}
+a {
+	color: inherit;
+	text-decoration: none ;
+}
+ul {
+	padding: 0;
+}
+ul li {
+	list-style-type: none!important;
+	line-height: 1.5;
+	color: #505050;
+	font-weight: bold;
+	background: #dbebf8;/*背景色*/
+	border-bottom: solid 2px #dadada;/*下に灰色線*/
+	margin-bottom: 5px;/*下のバーとの余白*/
+	border-radius: 15px 0 0 15px;/*左側の角だけ丸く*/
+	vertical-align: middle;
+	padding: 0.5em;
+}
+ul li:before{ /*疑似要素*/
+  display:inline-block; 
+  vertical-align: middle;
+  /*以下白丸つくる*/
+  content:'';
+  width:1em;
+  height: 1em;
+  background: #fff;
+  border-radius: 50%;
+  margin-right: 8px;
+}
