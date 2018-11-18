@@ -1,37 +1,32 @@
 package com.example.mail.dao;
 
-/**
- * アドレス用daoクラス
- * @author t.matsuda
- *
- */
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class AddressDao {
 
-	// 対象者
-	private String address;
-	// ユーザーID
-	private String userId;
-	// 日本語名
-	private String japaneseName;
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(Object object) {
-		this.address = (String) object;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(Object object) {
-		this.userId = (String) object;
-	}
-	public String getJapaneseName() {
-		return japaneseName;
-	}
-	public void setJapaneseName(Object object) {
-		this.japaneseName = (String) object;
-	}
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	/**
+	 * アドレス一覧を取得
+	 * @return List<Map<String, Object>> アドレスリスト
+	 */
+	public List<Map<String, Object>> getAddresses() {
+		String getAddressSql =
+				"SELECT "
+				+ "whosaddress AS address,"
+				+ "userid AS userId,"
+				+ "japanesename AS japaneseName "
+				+ "FROM address";
 
 
+		return jdbcTemplate.queryForList(getAddressSql);
 
+	}
 }
