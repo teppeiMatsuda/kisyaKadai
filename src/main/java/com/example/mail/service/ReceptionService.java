@@ -14,7 +14,7 @@ public class ReceptionService {
 	@Autowired
 	ReceptionDao ReceptionDao;
 	
-	public List<Map<String, Object>> getMailList(int userId) {
+	public List<Map<String, Object>> getMailList(String userId) {
 		
 		List<Map<String, Object>> list;
 		

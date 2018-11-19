@@ -71,7 +71,7 @@ public class ReceptionController {
 //			userId = (Integer) user.get(0).get("id");
 //		}
 		
-		int userId = 1;
+		String userId = "1";
 		
 		List<Map<String, Object>> list = ReceptionService.getMailList(userId);
 
