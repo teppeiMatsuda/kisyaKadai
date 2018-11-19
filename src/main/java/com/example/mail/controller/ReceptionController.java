@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,64 +16,63 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.mail.service.ReceptionService;
 import com.example.mail.service.LoginService;
-import javax.servlet.http.HttpSession;
+import com.example.mail.service.ReceptionService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class ReceptionController {
-	
+
 	@Autowired
 	ReceptionService ReceptionService;
 	@Autowired
 	LoginService LoginService;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	@RequestMapping(value = "/reception", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reception(Locale locale, Model model, HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
-		
+
 		String loginId = "";
-		// E•¶šƒR[ƒh‚Ì•ÏŠ·
+		// ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½[ï¿½hï¿½Ì•ÏŠï¿½
 		request.setCharacterEncoding("utf-8");
-		
+
 //		int userId = 0;
-//		// loginflgæ“¾
+//		// loginflgï¿½æ“¾
 //		String loginflg = request.getParameter("loginflg");
-//		
+//
 //		if(!loginflg.isEmpty()) {
-//			// login—pƒtƒH[ƒ€’læ“¾(ID)
+//			// loginï¿½pï¿½tï¿½Hï¿½[ï¿½ï¿½ï¿½lï¿½æ“¾(ID)
 //			loginId = request.getParameter("loginid");
 //			session.setAttribute("loginId", loginId);
 //			if(loginId.isEmpty()) {
 //				loginId = (String)session.getAttribute("loginId");
 //			}
-//			// login—pƒtƒH[ƒ€’læ“¾(password)
+//			// loginï¿½pï¿½tï¿½Hï¿½[ï¿½ï¿½ï¿½lï¿½æ“¾(password)
 //			String passWord = request.getParameter("password");
 //			session.setAttribute("passWord", passWord);
 //			if(passWord.isEmpty()) {
 //				passWord = (String)session.getAttribute("passWord");
 //			}
 //			if(loginId.isEmpty() || passWord.isEmpty()) {
-//				model.addAttribute("data", "ƒƒOƒCƒ“ID‚à‚µ‚­‚ÍƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+//				model.addAttribute("data", "ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íƒpï¿½Xï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B");
 //				return "login";
 //			}
 //			List<Map<String, Object>> user = LoginService.getUser(loginId, passWord);
 //			if(user.size() == 0) {
-//				model.addAttribute("data", "ƒƒOƒCƒ“ID‚à‚µ‚­‚ÍƒpƒXƒ[ƒh‚ªŠÔˆá‚Á‚Ä‚¢‚Ü‚·B");
+//				model.addAttribute("data", "ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íƒpï¿½Xï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Ôˆï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B");
 //				return "login";
 //			}
-//			// loginƒ†[ƒUID•Ï”’è‹`
+//			// loginï¿½ï¿½ï¿½[ï¿½UIDï¿½Ïï¿½ï¿½ï¿½`
 //			userId = (Integer) user.get(0).get("id");
 //		}
-		
-		int userId = 1;
-		
+
+		String userId = "jojo";
+
 		List<Map<String, Object>> list = ReceptionService.getMailList(userId);
 
 		if(list != null) {
@@ -83,27 +83,27 @@ public class ReceptionController {
 		}
 		return "reception";
 	}
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 * @return 
-	 * @throws IOException 
+	 * @return
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		// loginƒ†[ƒUID•Ï”’è‹`
-		String userId = "1";
-		
+
+		// loginï¿½ï¿½ï¿½[ï¿½UIDï¿½Ïï¿½ï¿½ï¿½`
+		String userId = "jojo";
+
 		String deleteflg = request.getParameter("deleteflg");
 		String midokuflg = request.getParameter("midokuflg");
 		String maildata[] = request.getParameterValues("maildata");
-		
+
 		ReceptionService.updateMailList(userId, maildata, deleteflg, midokuflg);
-		
+
 		model.addAttribute("deleteflg", deleteflg);
 		model.addAttribute("midokuflg", midokuflg);
-		
+
 		return "confilm";
 	}
 }

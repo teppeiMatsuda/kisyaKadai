@@ -15,12 +15,10 @@ public class ReceptionDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-	
-	public List<Map<String, Object>> getMailList(int userId) {
-		
-		// SQL用変数定義
+
+	public List<Map<String, Object>> getMailList(String userId) {
+
 		String mailSql = "";
-		// SQL作成
 		mailSql = "SELECT tf.mail_to, tf.mail_from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
 		mailSql += "FROM to_from tf ";
 		mailSql += "LEFT JOIN mail m ON m.id = tf.mailid ";
@@ -32,29 +30,25 @@ public class ReceptionDao {
 
 	@Transactional(rollbackFor = Exception.class)
 	public void updateMailList(String userId, String maildata[], String deleteflg, String midokuflg) {
-		
-		// SQL用変数定義
+
 		String mailSql = "";
-		
-		// SQLバインド変数
+
 		Map<String, Object> bind = new HashMap<String, Object>();
 		bind.put("to", userId);
 		if(deleteflg != null) {
 			if(deleteflg.equals("1")) {
-				// SQL作成
 				mailSql = "UPDATE to_from tf";
 				mailSql += " SET tf.to_deleteflg = 1";
 			}
 		}
 		if(midokuflg != null) {
 			if(midokuflg.equals("1")) {
-				// SQL作成
 				mailSql = "UPDATE to_from tf";
 				mailSql += " SET tf.read_flg = 0";
 			}
 		}
 		mailSql += " WHERE tf.mail_to = " + userId;
-		
+
 		String mailIdList = "";
 		int i = 0;
 		if(maildata != null) {

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.example.mail.bean.SubmitMailBean;
 
 /**
- * ƒ[ƒ‹‘—MDAO
+ * ãƒ¡ãƒ¼ãƒ«ä½œæˆDAO
  * @author t.matsuda
  *
  */
@@ -17,15 +17,15 @@ public class SubmitFormDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	/** ƒGƒ‰[ƒ^ƒCƒgƒ‹ */
-	private static final String errorSubject = "WRYYYYYYYYYY[[[ƒb";
-	/** ƒGƒ‰[–{•¶ */
-	private static final String errorMailBody = "–³‘Ê–³‘Ê–³‘Ê–³‘Ê–³‘Ê–³‘Ê–³‘Ê–³‘Êƒ@[[[ƒb";
+	/** é€ä¿¡è€…ä¸æ˜æ™‚ã‚¿ã‚¤ãƒˆãƒ« */
+	private static final String errorSubject = "WRYYYYYYYYYYãƒ¼ãƒ¼ãƒ¼ãƒƒ";
+	/** é€ä¿¡è€…ä¸æ˜æ™‚æœ¬æ–‡ */
+	private static final String errorMailBody = "ç„¡é§„ç„¡é§„ç„¡é§„ç„¡é§„ç„¡é§„ç„¡é§„ç„¡é§„ç„¡é§„ã‚¡ãƒ¼ãƒ¼ãƒ¼ãƒƒb";
 
 	/**
-	 * address‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©Šm”F
+	 * address
 	 * @param address
-	 * @return “o˜^‚³‚ê‚Ä‚¢‚é:true,“o˜^‚³‚ê‚Ä‚¢‚È‚¢:false
+	 * @return ã‚¢ãƒ‰ãƒ¬ã‚¹å­˜åœ¨æ™‚:true,ã‚¢ãƒ‰ãƒ¬ã‚¹éå­˜åœ¨æ™‚:false
 	 */
 	public boolean isExistAddress(String address) {
 		Integer count;
@@ -38,7 +38,7 @@ public class SubmitFormDao {
 	}
 
 	/**
-	 * “ü—Í‚³‚ê‚½ƒ[ƒ‹‚ğ“o˜^
+	 * ãƒ¡ãƒ¼ãƒ«å†…å®¹ç™»éŒ²
 	 * @param sb
 	 */
 	public void registMail(SubmitMailBean sb) {
@@ -50,9 +50,7 @@ public class SubmitFormDao {
 	}
 
 	/**
-	 * “ü—Í‚³‚ê‚½ƒ[ƒ‹‚ÉŠÖ‚·‚éÚ×î•ñ‚ğ“o˜^</br>
-	 * ˆ¶æ
-	 * ‘—‚èŒ³
+	 * é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒ¼ãƒ«ã®è©³ç´°ã‚’ç™»éŒ²</br>
 	 *
 	 * @param sb
 	 * @param address
@@ -70,13 +68,13 @@ public class SubmitFormDao {
 	}
 
 	/**
-	 * ƒ[ƒ‹‘—MæƒAƒhƒŒƒX‚ªƒGƒ‰[‚ÌÛ‚É“Í‚­‚¨’m‚ç‚¹ƒ[ƒ‹
+	 * å®›å…ˆä¸æ˜æ™‚ã«è¿”ã™ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒ¼ãƒ«ç™»éŒ²
 	 * @param address
 	 */
 	public void registErrorMail(SubmitMailBean sb, String address) {
 
 		String mailBody =
-				address+"‚Ö‚Ìƒ[ƒ‹‘—M‚Í"+errorMailBody
+				address+"ã¸ã®é€ä¿¡ã¯"+errorMailBody
 				+ "\r\n"
 				+"subject:"+sb.getSubject()
 				+ "\r\n"
@@ -89,7 +87,7 @@ public class SubmitFormDao {
 	}
 
 	/**
-	 * ƒ[ƒ‹‘—MæƒAƒhƒŒƒX‚ªƒGƒ‰[‚ÌÛ‚É“Í‚­‚¨’m‚ç‚¹ƒ[ƒ‹Ú×
+	 * å®›å…ˆä¸æ˜æ™‚ã«é€ä¿¡ã™ã‚‹ãƒ¡ãƒ¼ãƒ«ã®å±¥æ­´ç™»éŒ²
 	 * @param address
 	 */
 	public void registErrorMailHist(String address) {

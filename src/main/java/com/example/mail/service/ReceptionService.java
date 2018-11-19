@@ -13,20 +13,20 @@ public class ReceptionService {
 
 	@Autowired
 	ReceptionDao ReceptionDao;
-	
-	public List<Map<String, Object>> getMailList(int userId) {
-		
+
+	public List<Map<String, Object>> getMailList(String userId) {
+
 		List<Map<String, Object>> list;
-		
+
 		list = ReceptionDao.getMailList(userId);
-		
+
 		return list;
 	}
 
 	public boolean updateMailList(String userId, String maildata[], String deleteflg, String midokuflg) {
-		
+
 		ReceptionDao.updateMailList(userId, maildata, deleteflg, midokuflg);
-		
+
 		return true;
 	}
 

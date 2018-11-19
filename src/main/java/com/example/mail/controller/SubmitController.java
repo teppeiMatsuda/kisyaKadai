@@ -21,7 +21,7 @@ import com.example.mail.service.SubmitService;
  */
 @Controller
 public class SubmitController {
-	
+
 	@Autowired
 	SubmitService SubmitService;
 
@@ -31,9 +31,8 @@ public class SubmitController {
 	@RequestMapping(value = "/submitList", method = { RequestMethod.GET, RequestMethod.POST })
 	public String submitList(Locale locale, Model model, HttpServletRequest request) {
 
-		// loginユーザID変数定義
-		String userId = "1";
-		
+		String userId = "jojo";
+
 		List<Map<String, Object>> list = SubmitService.getMailList(userId);
 
 		if(list != null) {
@@ -44,25 +43,24 @@ public class SubmitController {
 		}
 		return "submit";
 	}
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 * @return 
-	 * @throws IOException 
+	 * @return
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/submitUpdate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		// loginユーザID変数定義
+
 		String userId = "1";
-		
+
 		String deleteflg = request.getParameter("deleteflg");
 		String maildata[] = request.getParameterValues("maildata");
-		
+
 		SubmitService.updateMailList(userId, maildata, deleteflg);
-		
+
 		model.addAttribute("deleteflg", deleteflg);
-		
+
 		return "confilm";
 	}
 
