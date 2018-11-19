@@ -3,6 +3,35 @@ body {
 	background-color: ;
 	width: auto;
 }
-.id, .pw {
-	width: 20px;
+form {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
 }
+label {
+	width: 100px;
+	float: left;
+}
+.id, .pw {
+	width: 100px;
+}
+.input_center {
+	width: 300px;
+	margin: 0 auto;
+}
+.button {
+	margin-right: 10px;
+	margin-left:  10px;
+}
+.errorMassege{
+	text-align:center;
+	color:red;
+}
+/*
+.submit {
+	float: right;
+}
+.clear {
+	float: right;
+}
+*/

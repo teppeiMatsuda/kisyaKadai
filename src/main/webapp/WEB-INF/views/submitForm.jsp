@@ -16,7 +16,13 @@
 		<form:form modelAttribute="submitMailBean">
 			<table>
 				<tr>
-					<td>To:</td>
+					<td colspan="2">複数宛先指定はカンマ区切りで入力して下さい。</td>
+				</tr>
+				<tr>
+					<td colspan="2">（例：aaa@xxx, bbb@yyy, ccc@zzz）</td>
+				</tr>
+				<tr>
+					<td>To</td>
 					<td><form:input path="address" size="40" /></td>
 				</tr>
 				<tr>
