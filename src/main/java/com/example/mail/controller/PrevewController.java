@@ -19,41 +19,43 @@ import com.example.mail.service.PrevewService;
  */
 @Controller
 public class PrevewController {
-	
+
 	@Autowired
 	PrevewService PrevewService;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/prevew", method = RequestMethod.GET)
 	public String prevew(Locale locale, Model model, HttpServletRequest request) {
-		
-		
+
+
 		String mailid = request.getParameter("id");
-		
+
 		List<Map<String, Object>> maildata = PrevewService.getMailData(mailid);
-		
+
         model.addAttribute("maildata", maildata.get(0));
-		
+
 		return "prevew";
 	}
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/submitPrevew", method = RequestMethod.GET)
 	public String submitPrevew(Locale locale, Model model, HttpServletRequest request) {
-		
-		
+
+
 		String mailid = request.getParameter("id");
-		
+
 		int submitFlg = 1;
-		
+
 		List<Map<String, Object>> maildata = PrevewService.getMailData(mailid, submitFlg);
-		
-        model.addAttribute("maildata", maildata.get(0));
-		
+		maildata.get(0).get("main");
+
+        model.addAttribute("title", maildata.get(0).get("title"));
+        model.addAttribute("main", ((String) maildata.get(0).get("main")).replaceAll("(\r\n|\n)", "<br />"));
+
 		return "prevew";
 	}
 }
