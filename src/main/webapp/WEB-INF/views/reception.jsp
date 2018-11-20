@@ -57,7 +57,7 @@ table {
 			  			<td class="naiyo"><input type="checkbox" name="maildata" value="${obj.mailid}"></td>
 						<td class="naiyo"><c:out value="${obj.recept_date}"/></td>
 						<td class="naiyo"><c:out value="${obj.title}"/></td>
-						<td class="naiyo">高島</td>
+						<td class="naiyo">${obj.mail_from}</td>
 						<td class="naiyo"><a href="prevew?id=${obj.mailid}">詳細</a></td>
 						<td class="naiyo">
 							<c:choose>
