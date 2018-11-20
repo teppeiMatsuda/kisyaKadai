@@ -52,7 +52,7 @@ public class SubmitController {
 	@RequestMapping(value = "/submitUpdate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String update(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		String userId = "1";
+		String userId = "jojo";
 
 		String deleteflg = request.getParameter("deleteflg");
 		String maildata[] = request.getParameterValues("maildata");

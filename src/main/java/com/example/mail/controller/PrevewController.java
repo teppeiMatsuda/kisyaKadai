@@ -34,7 +34,8 @@ public class PrevewController {
 
 		List<Map<String, Object>> maildata = PrevewService.getMailData(mailid);
 
-        model.addAttribute("maildata", maildata.get(0));
+		model.addAttribute("title", maildata.get(0).get("title"));
+        model.addAttribute("main", ((String) maildata.get(0).get("main")).replaceAll("(\r\n|\n)", "<br />"));
 
 		return "prevew";
 	}

@@ -15,16 +15,16 @@ public class SubmitDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-	
+
 	public List<Map<String, Object>> getMailList(String userId) {
-		
-		// SQL—p•Ï”’è‹`
+
+		// SQLï¿½pï¿½Ïï¿½ï¿½ï¿½`
 		String mailSql = "";
-		// SQLì¬
+		// SQLï¿½ì¬
 		mailSql = "SELECT tf.mail_to, tf.mail_from, tf.mailid, tf.read_flg, m.title, m.main, m.recept_date ";
 		mailSql += "FROM to_from tf ";
 		mailSql += "LEFT JOIN mail m ON m.id = tf.mailid ";
-		mailSql += "where tf.mail_from = ? AND from_deleteflg = 0";
+		mailSql += "where tf.mail_from = ? AND from_deleteflg = 0 ORDER BY m.recept_date DESC";
 
 		List<Map<String, Object>> list = jdbcTemplate.queryForList(mailSql, userId);
 		return list;
@@ -32,22 +32,22 @@ public class SubmitDao {
 
 	@Transactional(rollbackFor = Exception.class)
 	public void updateMailList(String userId, String maildata[], String deleteflg) {
-		
-		// SQL—p•Ï”’è‹`
+
+		// SQLï¿½pï¿½Ïï¿½ï¿½ï¿½`
 		String mailSql = "";
-		
-		// SQLƒoƒCƒ“ƒh•Ï”
+
+		// SQLï¿½oï¿½Cï¿½ï¿½ï¿½hï¿½Ïï¿½
 		Map<String, Object> bind = new HashMap<String, Object>();
 		bind.put("to", userId);
 		if(deleteflg != null) {
 			if(deleteflg.equals("1")) {
-				// SQLì¬
+				// SQLï¿½ì¬
 				mailSql = "UPDATE to_from tf";
 				mailSql += " SET tf.from_deleteflg = 1";
 			}
 		}
 		mailSql += " WHERE tf.mail_from = " + userId;
-		
+
 		String mailIdList = "";
 		int i = 0;
 		int bool = 100;
