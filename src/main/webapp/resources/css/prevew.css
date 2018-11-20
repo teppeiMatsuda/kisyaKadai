@@ -50,8 +50,10 @@ h1{
 	margin-left: 15%;
 }
 .link {
-	text-align: left;
+	text-align: right;
 	margin-left: 5%;
+}
+.link a {
 	text-decoration: underline;
 }
 .naiyo {

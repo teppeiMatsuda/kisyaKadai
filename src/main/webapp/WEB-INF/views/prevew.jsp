@@ -14,9 +14,9 @@
 		<a href="reception">受信一覧に戻る</a>
 	</span>
 	<br/>
-	<P class="mail"> タイトル </P>
+	<P class="mail">Title</P>
 	<P class="maildata">${title}</P>
-	<P class="mail"> 本文</P>
+	<P class="mail">Main</P>
 	<P class="maildata">${main}</P>
 </div>
 <%@ include file="sideber.jsp" %>
