@@ -1,38 +1,22 @@
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ include file="sideber.jsp" %>
-<!-- <link rel="stylesheet" href="/common.css"> -->
-<style type="text/css">
-<!--
-h1{
-	text-align:center;
-	color:red;
-}
-table {
-	text-align:center;
-	margin-left: auto;
-	margin-right: auto;
-	border
-}
-.naiyo {
-	padding: 5px;
-}
--->
-</style>
 <html>
 <head>
 	<title>完了</title>
+	<link href="<c:url value="/resources/css/confilm.css" />" rel="stylesheet">
 </head>
 <body>
-<h1>
-	完了画面
-</h1>
+<div class="main">
+	<h1>完了画面</h1>
 	<c:if test="${deleteflg == 1}">
-	  	削除が完了しました。
+	  	<p class="left">削除が完了しました。</p>
 	</c:if>
 	<c:if test="${midokuflg == 1}">
-	  	選択したメールを未読にしました。
+	  	<p class="left">選択したメールを未読にしました。</p>
 	</c:if>
+</div>
+<%@ include file="sideber.jsp" %>
 </body>
 </html>
