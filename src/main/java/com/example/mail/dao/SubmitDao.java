@@ -46,7 +46,7 @@ public class SubmitDao {
 				mailSql += " SET tf.from_deleteflg = 1";
 			}
 		}
-		mailSql += " WHERE tf.mail_from = " + userId;
+		mailSql += " WHERE tf.mail_from = '" + userId +"'";
 
 		String mailIdList = "";
 		int i = 0;

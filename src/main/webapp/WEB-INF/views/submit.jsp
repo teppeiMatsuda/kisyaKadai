@@ -19,18 +19,20 @@
 				<thead>
 					<tr>
 						<td></td>
-						<td>送信日</td>
+						<td>宛先</td>
 						<td>タイトル</td>
-						<td></td>
+						<td>本文</td>
+						<td>受信日時</td>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="obj" items="${data}" varStatus="status">
 				  		<tr>
 				  			<td class="naiyo naiyo1"><input type="checkbox" name="maildata" value="${obj.mailid}"></td>
-							<td class="naiyo naiyo2"><c:out value="${obj.recept_date}"/></td>
+				  			<td class="naiyo naiyo5"><c:out value="${obj.mail_to}"/></td>
 							<td class="naiyo naiyo3"><c:out value="${obj.title}"/></td>
-							<td class="naiyo naiyo4"><a href="submitPrevew?id=${obj.mailid}">詳細</a></td>
+							<td class="naiyo naiyo4"><a href="submitPrevew?id=${obj.mailid}">詳細</a>
+							<td class="naiyo naiyo2"><c:out value="${obj.recept_date}"/></td></td>
 				  		</tr>
 					</c:forEach>
 				</tbody>

@@ -23,10 +23,10 @@
 				<thead>
 					<tr>
 						<td></td>
-						<td>受信日</td>
-						<td>タイトル</td>
 						<td>送信者</td>
-						<td></td>
+						<td>タイトル</td>
+						<td>本文</td>
+						<td>受信日</td>
 						<td></td>
 					</tr>
 				</thead>
@@ -34,10 +34,10 @@
 					<c:forEach var="obj" items="${data}" varStatus="status">
 				  		<tr>
 				  			<td class="naiyo naiyo1"><input type="checkbox" name="maildata" value="${obj.mailid}"></td>
-							<td class="naiyo naiyo2"><c:out value="${obj.recept_date}"/></td>
+				  			<td class="naiyo naiyo4">${obj.mail_from}</td>
 							<td class="naiyo naiyo3"><c:out value="${obj.title}"/></td>
-							<td class="naiyo naiyo4">${obj.mail_from}</td>
-							<td class="naiyo naiyo5"><a href="prevew?id=${obj.mailid}">詳細</a></td>
+							<td class="naiyo naiyo5"><a href="prevew?id=${obj.mailid}">本文</a></td>
+							<td class="naiyo naiyo2"><c:out value="${obj.recept_date}"/></td>
 							<td class="naiyo naiyo6">
 								<c:choose>
 									<c:when test="${obj.read_flg == 1}">既読</c:when>
