@@ -1,40 +1,24 @@
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ include file="sideber.jsp" %>
-<style type="text/css">
-<!--
-h1{
-	text-align:center;
-	color:red;
-}
-table {
-	text-align:center;
-	margin-left: auto;
-	margin-right: auto;
-	border
-}
-.naiyo {
-	padding: 5px;
-}
-.mail {
-	text-align:center;
-}
--->
-</style>
 <html>
 <head>
 	<title>メールプレビュー</title>
+	<link href="<c:url value="/resources/css/prevew.css" />" rel="stylesheet">
 </head>
 <body>
-<h1>
-	メールプレビュー
-</h1>
-
-<P class="mail"> タイトル </P>
-<P class="mail">${title}</P>
-<P class="mail"> 本文</P>
-<P class="mail">${main}</P>
-<a href="reception">受信一覧に戻る</a>
+<div class="main">
+	<h1>メールプレビュー</h1>
+	<span class="link">
+		<a href="reception">受信一覧に戻る</a>
+	</span>
+	<br/>
+	<P class="mail">Title</P>
+	<P class="maildata">${title}</P>
+	<P class="mail">Main</P>
+	<P class="maildata">${main}</P>
+</div>
+<%@ include file="sideber.jsp" %>
 </body>
 </html>

@@ -12,26 +12,25 @@
 <body>
 <div class="main">
 	<h1>メール作成</h1>
+	<div class="right">
+		複数宛先指定はカンマ区切りで入力して下さい。
+		<br/>
+		（例：aaa@xxx, bbb@yyy, ccc@zzz）
+	</div>
 	<div class="submitForm">
 		<form:form modelAttribute="submitMailBean">
 			<table>
 				<tr>
-					<td colspan="2">複数宛先指定はカンマ区切りで入力して下さい。</td>
-				</tr>
-				<tr>
-					<td colspan="2">（例：aaa@xxx, bbb@yyy, ccc@zzz）</td>
-				</tr>
-				<tr>
 					<td>To</td>
-					<td><form:input path="address" size="40" /></td>
+					<td class="text"><form:input path="address"/></td>
 				</tr>
 				<tr>
 					<td>Subject</td>
-					<td><form:input path="subject" size="40" /></td>
+					<td class="text"><form:input path="subject"/></td>
 				</tr>
 				<tr>
 					<td>Mail Body</td>
-					<td><form:textarea path="mailBody" cols="30" row="20" /></td>
+					<td class="text"><form:textarea path="mailBody" row="40" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="送信">
