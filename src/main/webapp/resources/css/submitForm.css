@@ -12,8 +12,7 @@ body {
 }
 .submitForm form,
 .submitForm form table,
-.submitForm form table tr,
-.submitForm form table tr td {
+.submitForm form table tr {
 	width: 100%;
 }
 h1 {
